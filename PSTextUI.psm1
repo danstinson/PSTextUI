@@ -1,7 +1,7 @@
 #*****************************************************************************
 # PSTextUI.pms1
 # Draw text user interface elements on a standard console terminal.
-# 2025-06-28, Dan Stinson
+# 2026-09-28, Dan Stinson
 #*****************************************************************************
 # Important Concepts:
 # -------------------
@@ -21,7 +21,7 @@
 # -------
 $moduleName = $MyInvocation.MyCommand.Name
 $moduleVersion = "1.0"
-$debugFlag = $true
+$debugFlag = $false
 $debugFile = "C:\Temp\PSTextUI\debug.log"
 
 
@@ -804,7 +804,8 @@ function Show-TextBox
                     Debug "        Line value is blank.  Must pass at least one space to Show-Text."
                     $line = " "
                 }
-                Show-Text -Text $line -X ($boxX + 1 + $PadWidth) -Y ($boxY + 1 + $PadHeight + ($lineNbr - 1)) -SaveCursorLocation
+                Show-Text -Text $line -X ($boxX + 1 + $PadWidth) -Y ($boxY + 1 + $PadHeight + ($lineNbr - 1)) `
+                    -SaveCursorLocation -ForegroundColor $TextColor -BackgroundColor $BackgroundColor
             }
         }
 
